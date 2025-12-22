@@ -86,7 +86,9 @@ graph LR
 
 ### Output 1 - Image Detection
 _Detects if a face in an uploaded image is Real or Fake._
-![Image Detection Screenshot](https://via.placeholder.com/600x400?text=Image+Detection+Result+Card)
+
+<img width="507" height="827" alt="image" src="https://github.com/user-attachments/assets/98a67d5b-90cc-4892-b52d-a0290ae2ed74" />
+
 
 ### Output 2 - Video Analysis
 _Scans video files frame-by-frame to identify manipulation._
