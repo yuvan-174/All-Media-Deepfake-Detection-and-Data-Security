@@ -25,7 +25,58 @@ DeepDetect is a project designed to combat the rising threat of misinformation a
 * **Additional Dependencies:** `cryptography` for file encryption, `werkzeug` for secure file handling, and `Pillow` for image manipulation.
 
 ## System Architecture
-_(Placeholder for your architecture diagram)_
+
+```mermaid
+graph LR
+    %% Define styles
+    classDef user fill:#2d3436,stroke:#dfe6e9,stroke-width:2px,color:#dfe6e9;
+    classDef flask fill:#0984e3,stroke:#74b9ff,stroke-width:2px,color:white;
+    classDef ai fill:#6c5ce7,stroke:#a29bfe,stroke-width:2px,color:white;
+    classDef storage fill:#00b894,stroke:#55efc4,stroke-width:2px,color:white;
+
+    subgraph Client_Side ["Client Side"]
+        direction TB
+        Mobile("📱 Mobile Web"):::user
+        Web("💻 Desktop Web"):::user
+    end
+
+    subgraph Server_Side ["DeepDetect Core System"]
+        direction TB
+        
+        Frontend("JS Interface"):::flask
+        Backend("Flask Controller"):::flask
+        
+        subgraph Models ["AI Detection Engine"]
+            direction TB
+            Img("Image Model"):::ai
+            Vid("Video Model"):::ai
+            Txt("Text/GenAI Check"):::ai
+            PII("PII Scanner"):::ai
+        end
+        
+        Storage[("Local Data")]:::storage
+    end
+
+    %% Connections
+    Mobile -->|"Upload Media"| Backend
+    Web -->|"Upload Media"| Backend
+    Backend <-->|"Serve UI"| Frontend
+    
+    %% Connect Flask to all models
+    Backend -->|"Process"| Img
+    Backend -->|"Process"| Vid
+    Backend -->|"Process"| Txt
+    Backend -->|"Process"| PII
+    
+    %% Results back
+    Img & Vid & Txt & PII -->|"Return Probability"| Backend
+    
+    Backend -->|"Save Report"| Storage
+
+    %% Layout hints
+    style Server_Side fill:#f1f2f6,stroke:#b2bec3,stroke-dasharray: 5 5
+```
+
 * **Frontend:** HTML5, CSS3 (Glassmorphism), JavaScript (Fetch API).
 * **Backend:** Flask (REST API).
 * **AI Engine:** Hugging Face Transformers, MTCNN, Presidio.
