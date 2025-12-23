@@ -94,7 +94,10 @@ _Detects if a face in an uploaded image is Real or Fake._
 _Scans video files frame-by-frame to identify manipulation._
 ![Video Detection Screenshot](https://via.placeholder.com/600x400?text=Video+Analysis+Result)
 
-### Output 3 - PII Redaction
+### Output 3 - Text Analysis
+
+
+### Output 4 - PII Redaction
 _Identifies sensitive entities (Names, Phones, Emails) and encrypts the file._
 ![PII Detection Screenshot](https://via.placeholder.com/600x400?text=PII+Redaction+Result)
 
